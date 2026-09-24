@@ -40,13 +40,12 @@ BL_DISPLAY_ORDER = ["sdedit", "ddpm", "ddpm-100", "ddim", "ddim-1000", "musicgen
 # Fallback _worse methods
 BL_FALLBACK = {"sdedit_worse": "sdedit", "ddpm_worse": "ddpm", "ddim_worse": "ddim"}
 
-# Copy audio files
+# Copy audio files（始终覆盖：文件名按案例位置编号，案例列表更新后必须替换旧文件）
 def copy_audio(src, label):
     if not src or not os.path.exists(src):
         return None
     dst = AUDIO_DIR / f"{label}.wav"
-    if not dst.exists():
-        shutil.copy2(src, dst)
+    shutil.copy2(src, dst)
     return f"static/audio/{label}.wav"
 
 copied = 0
