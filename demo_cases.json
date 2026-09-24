@@ -15,7 +15,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Grunge/A recording of a classical score./wavs/2.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Grunge/A recording of a classical score/wavs/2.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Grunge/A recording of a classical score/wavs/2.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Grunge/A recording of a classical score./wavs/2.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Grunge/A recording of a classical score./wavs/2.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_Grunge__seed2.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_Grunge/2/A recording of a classical score..wav"
       },
       "metrics": {
         "clap_score": 0.5417,
@@ -38,7 +40,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Zeppelin/A recording of an opera piece./wavs/1.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Zeppelin/A recording of an opera piece/wavs/1.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Zeppelin/A recording of an opera piece/wavs/1.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Zeppelin/A recording of an opera piece./wavs/1.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Zeppelin/A recording of an opera piece./wavs/1.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_Zeppelin__seed1.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_Zeppelin/1/A recording of an opera piece..wav"
       },
       "metrics": {
         "clap_score": 0.4523,
@@ -61,7 +65,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_SpeedMetal/A high quality recording of a violin playing a cool metal solo with accompaniment./wavs/2.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_SpeedMetal/A high quality recording of a violin playing a cool metal solo with accompaniment/wavs/2.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_SpeedMetal/A high quality recording of a violin playing a cool metal solo with accompaniment/wavs/2.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_SpeedMetal/A high quality recording of a violin playing a cool metal solo with accompaniment./wavs/2.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_SpeedMetal/A high quality recording of a violin playing a cool metal solo with accompaniment./wavs/2.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_SpeedMetal__seed2.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_SpeedMetal/2/A high quality recording of a violin playing a cool metal solo with accompaniment..wav"
       },
       "metrics": {
         "clap_score": 0.4991,
@@ -84,7 +90,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_BebopJazz/A recording of a dark techno song./wavs/2.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_BebopJazz/A recording of a dark techno song/wavs/2.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_BebopJazz/A recording of a dark techno song/wavs/2.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_BebopJazz/A recording of a dark techno song./wavs/2.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_BebopJazz/A recording of a dark techno song./wavs/2.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_BebopJazz__seed2.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_BebopJazz/2/A recording of a dark techno song..wav"
       },
       "metrics": {
         "clap_score": 0.4688,
@@ -107,7 +115,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Disco/A recording of an epic movie soundtrack./wavs/11.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Disco/A recording of an epic movie soundtrack/wavs/11.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Disco/A recording of an epic movie soundtrack/wavs/11.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Disco/A recording of an epic movie soundtrack./wavs/11.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Disco/A recording of an epic movie soundtrack./wavs/11.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_Disco__seed11.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_Disco/11/A recording of an epic movie soundtrack..wav"
       },
       "metrics": {
         "clap_score": 0.474,
@@ -130,7 +140,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_80sRock/A recording of Arabic music./wavs/3.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_80sRock/A recording of Arabic music/wavs/3.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_80sRock/A recording of Arabic music/wavs/3.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_80sRock/A recording of Arabic music./wavs/3.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_80sRock/A recording of Arabic music./wavs/3.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_80sRock__seed3.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_80sRock/3/A recording of Arabic music..wav"
       },
       "metrics": {
         "clap_score": 0.5427,
@@ -153,7 +165,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Beatles/A high quality recording of an orchestra playing an epic soundtrack./wavs/2.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Beatles/A high quality recording of an orchestra playing an epic soundtrack/wavs/2.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Beatles/A high quality recording of an orchestra playing an epic soundtrack/wavs/2.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Beatles/A high quality recording of an orchestra playing an epic soundtrack./wavs/2.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Beatles/A high quality recording of an orchestra playing an epic soundtrack./wavs/2.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_Beatles__seed2.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_Beatles/2/A high quality recording of an orchestra playing an epic soundtrack..wav"
       },
       "metrics": {
         "clap_score": 0.4519,
@@ -176,7 +190,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Britpop/A recording of Arabic music./wavs/3.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Britpop/A recording of Arabic music/wavs/3.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Britpop/A recording of Arabic music/wavs/3.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Britpop/A recording of Arabic music./wavs/3.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Britpop/A recording of Arabic music./wavs/3.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_Britpop__seed3.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_Britpop/3/A recording of Arabic music..wav"
       },
       "metrics": {
         "clap_score": 0.5196,
@@ -199,7 +215,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Gospel/A recording of an upbeat techno song./wavs/3.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Gospel/A recording of an upbeat techno song/wavs/3.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Gospel/A recording of an upbeat techno song/wavs/3.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Gospel/A recording of an upbeat techno song./wavs/3.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Gospel/A recording of an upbeat techno song./wavs/3.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_Gospel__seed3.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_Gospel/3/A recording of an upbeat techno song..wav"
       },
       "metrics": {
         "clap_score": 0.4713,
@@ -222,7 +240,9 @@
         "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav",
         "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Rockabilly/A recording of an techno song/wavs/1.wav",
         "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Rockabilly/A recording of an techno song/wavs/1.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav"
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav",
+        "steermusic": "/DATA4_4T/yzqr/quiz/demo/steermusic_md_crops/MusicDelta_Rockabilly__seed1.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/musicdelta/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/MusicDelta_Rockabilly/1/A recording of an techno song..wav"
       },
       "metrics": {
         "clap_score": 0.5239,
@@ -239,6 +259,8 @@
       "target_prompt": "a solo hihat music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Real_Instrument/K3_lr0.001_rho3e-6/clarinet_2/wavs/a solo hihat music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/no_overlap_chunk10240ms_uniform_concat/real_instrument/clarinet_2__hihat.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Real_Instrument/clarinet_2/wavs/a solo hihat music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/real_instrument_t-start/100/clarinet_2/wavs/a_solo_hihat_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/real_instrument_new/100/clarinet_2/wavs/a_solo_hihat_music.wav",
         "ddim_worse": "/DATA6_6T/yy/exp_results_models/ddim_worse/real_instrument_t-start_new/100/clarinet_2/wavs/a_solo_hihat_music.wav",
@@ -261,6 +283,8 @@
       "target_prompt": "a solo taiko music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Real_Instrument/K3_lr0.001_rho1e-6/piano_1/wavs/a solo taiko music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/no_overlap_chunk10240ms_uniform_concat/real_instrument/piano_1__taiko.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Real_Instrument/piano_1/wavs/a solo taiko music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/real_instrument_t-start/100/piano_1/wavs/a_solo_taiko_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/real_instrument_new/100/piano_1/wavs/a_solo_taiko_music.wav",
         "ddim_worse": "/DATA6_6T/yy/exp_results_models/ddim_worse/real_instrument_t-start_new/100/piano_1/wavs/a_solo_taiko_music.wav",
@@ -283,6 +307,8 @@
       "target_prompt": "a typical jazz music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Generated_Style/K3_lr0.001_rho1e-7/punk_100/wavs/a typical jazz music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/overlap1s_chunk10240ms_uniform_discard_edge_concat/gen_style/punk_100__jazz.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Generated_Style/punk_100/wavs/a typical jazz music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/generated_style_t-start/100/punk_100/wavs/a_typical_jazz_music.wav",
         "sdedit_worse": "/DATA6_6T/yy/exp_results_models/sdedit_worse/generated_style_t-start/100/punk_100/wavs/a_typical_jazz_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/generated_style_t-start/100/punk_100/wavs/a_typical_jazz_music.wav",
@@ -307,6 +333,8 @@
       "target_prompt": "a solo drum music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Generated_Instrument/K3_lr0.001_rho1e-5/piano_100/wavs/a solo drum music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/overlap1s_chunk10240ms_uniform_discard_edge_concat/gen_instrument/piano_100__drum.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Generated_Instrument/piano_100/wavs/a solo drum music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/generated_instrument_t-start/100/piano_100/wavs/a_solo_drum_music.wav",
         "sdedit_worse": "/DATA6_6T/yy/exp_results_models/sdedit_worse/generated_instrument_t-start/100/piano_100/wavs/a_solo_drum_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/generated_instrument_t-start_new/100/piano_100/wavs/a_solo_drum_music.wav",
@@ -330,6 +358,8 @@
       "target_prompt": "a solo hihat music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Generated_Instrument/K3_lr0.001_rho3e-8/accordion_100/wavs/a solo hihat music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/overlap1s_chunk10240ms_uniform_discard_edge_concat/gen_instrument/accordion_100__hihat.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Generated_Instrument/accordion_100/wavs/a solo hihat music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/generated_instrument_t-start/100/accordion_100/wavs/a_solo_hihat_music.wav",
         "sdedit_worse": "/DATA6_6T/yy/exp_results_models/sdedit_worse/generated_instrument_t-start/100/accordion_100/wavs/a_solo_hihat_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/generated_instrument_t-start_new/100/accordion_100/wavs/a_solo_hihat_music.wav",
@@ -353,6 +383,8 @@
       "target_prompt": "a solo piano music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Real_Instrument/K3_lr0.001_rho3e-7/saxophone_5/wavs/a solo piano music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/no_overlap_chunk10240ms_uniform_concat/real_instrument/saxophone_5__piano.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Real_Instrument/saxophone_5/wavs/a solo piano music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/real_instrument_t-start/100/saxophone_5/wavs/a_solo_piano_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/real_instrument_new/100/saxophone_5/wavs/a_solo_piano_music.wav",
         "ddim_worse": "/DATA6_6T/yy/exp_results_models/ddim_worse/real_instrument_t-start_new/100/saxophone_5/wavs/a_solo_piano_music.wav",
@@ -375,6 +407,8 @@
       "target_prompt": "a typical jazz music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Generated_Style/K3_lr0.001_rho1e-8/rock_200/wavs/a typical jazz music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/overlap1s_chunk10240ms_uniform_discard_edge_concat/gen_style/rock_200__jazz.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Generated_Style/rock_200/wavs/a typical jazz music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/generated_style_t-start/100/rock_200/wavs/a_typical_jazz_music.wav",
         "sdedit_worse": "/DATA6_6T/yy/exp_results_models/sdedit_worse/generated_style_t-start/100/rock_200/wavs/a_typical_jazz_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/generated_style_t-start/100/rock_200/wavs/a_typical_jazz_music.wav",
@@ -399,6 +433,8 @@
       "target_prompt": "a typical jazz music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Real_Style/K3_lr0.001_rho3e-6/metal_1/wavs/a typical jazz music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/no_overlap_chunk10240ms_uniform_concat/real_style/metal_1__jazz.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Real_Style/metal_1/wavs/a typical jazz music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/real_style_t-start/100/metal_1/wavs/a_typical_jazz_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/real_style_t-start_new/100/metal_1/wavs/a_typical_jazz_music.wav",
         "ddpm_worse": "/DATA6_6T/yy/exp_results_models/ddpm_worse/real_style_t-start_new/100/metal_1/wavs/a_typical_jazz_music.wav",
@@ -422,6 +458,8 @@
       "target_prompt": "a happy music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Generated_Mood/K3_lr0.001_rho3e-6/energetic_100/wavs/a happy music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/overlap1s_chunk10240ms_uniform_discard_edge_concat/gen_mood/energetic_100__happy.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Generated_Mood/energetic_100/wavs/a happy music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/generated_mood_t-start/100/energetic_100/wavs/a_happy_music.wav",
         "sdedit_worse": "/DATA6_6T/yy/exp_results_models/sdedit_worse/generated_mood_t-start/100/energetic_100/wavs/a_happy_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/generated_mood_t-start/100/energetic_100/wavs/a_happy_music.wav",
@@ -446,6 +484,8 @@
       "target_prompt": "a energetic music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/melodia/melodia_results_attn_enm_v8_rho_sweep/Generated_Mood/K3_lr0.001_rho1e-7/peaceful_400/wavs/a energetic music.wav",
       "baselines": {
+        "steermusic": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/steermusic_reevaluation_20260924/audio_bundle/temp/20260329T203551_melodia_edit/eval/overlap1s_chunk10240ms_uniform_discard_edge_concat/gen_mood/peaceful_400__energetic.wav",
+        "nti": "/DATA1_4T/shared/AudioLDM2/NTI/melodiaedit/steps200_K10_lr0.01_cfg3.5_pfp16_ls1024/Generated_Mood/peaceful_400/wavs/a energetic music.wav",
         "sdedit": "/DATA6_6T/yy/exp_results_models/sdedit/generated_mood_t-start/100/peaceful_400/wavs/a_energetic_music.wav",
         "sdedit_worse": "/DATA6_6T/yy/exp_results_models/sdedit_worse/generated_mood_t-start/100/peaceful_400/wavs/a_energetic_music.wav",
         "ddpm": "/DATA6_6T/yy/exp_results_models/ddpm/generated_mood_t-start/100/peaceful_400/wavs/a_energetic_music.wav",
