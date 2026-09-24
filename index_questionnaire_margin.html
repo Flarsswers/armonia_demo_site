@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Editing Listening Test</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; margin: 0; padding: 2rem; }
+    .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 2rem 3rem; border: 1px solid #e0e0e0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    h1, h2, h3 { color: #111; font-weight: 600; margin-top: 1.5em; margin-bottom: 0.8em; }
+    h1 { font-size: 1.8rem; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 0.5em; margin-top: 0; }
+    h2 { font-size: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.4em; }
+    h3 { font-size: 1.2rem; margin-bottom: 0.5em; color: #2a2a2a; }
+    h4 { font-size: 1rem; font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em; }
+    p { margin-bottom: 1em; } ul { padding-left: 20px; } li { margin-bottom: 0.75em; }
+    audio { width: 100%; margin-top: 5px; border-radius: 50px; }
+    .prompt { background: #e8f4f8; border-left: 4px solid #007bff; padding: 14px 20px; margin: 1em 0; font-size: 1.05em; border-radius: 4px; color: #2c3e50; font-weight: 500; box-shadow: 0 1px 3px rgba(0,123,255,0.1); }
+    .evaluation-module { border: 1px solid #ddd; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; background: #fdfdfd; }
+    .evaluation-module hr { border: none; border-top: 2px dashed #ccc; margin: 2rem 0; }
+    .question-block { margin-top: 1.5rem; padding: 1rem; background: #fafafa; border-radius: 6px; border-left: 3px solid #007bff; }
+    .question-text { font-weight: 500; margin-bottom: 0.8em; color: #2a2a2a; }
+    .question-explanation { font-size: 0.9em; color: #666; font-style: italic; margin-top: 0.5em; margin-bottom: 1em; padding-left: 1em; border-left: 2px solid #ddd; }
+    .likert-scale { display: flex; justify-content: space-between; list-style: none; padding: 0; margin: 0 auto; max-width: 500px; }
+    .likert-scale li { text-align: center; }
+    .likert-scale input[type="radio"] { display: block; margin: 5px auto 0; transform: scale(1.2); }
+    .likert-label { font-size: 0.9em; color: #555; }
+    .method-label { display: inline-block; background: #007bff; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 0.85em; font-weight: 600; margin-left: 10px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Music Editing Listening Test</h1>
+  <section id="introduction">
+    <h2>Instructions</h2>
+    <p>Welcome! In this listening test, you'll help us evaluate some edited music clips.</p>
+    <p><strong>What you'll do:</strong></p>
+    <ul>
+      <li><strong>First, you'll hear the "Source Music"</strong> — the original music clip we want to modify.</li>
+      <li><strong>You'll see a "Source Prompt"</strong> — a text description of what the original music sounds like.</li>
+      <li><strong>You'll see a "Target Prompt"</strong> — a description of how we want to change the music.</li>
+      <li><strong>Then, you'll hear an "Edited Result"</strong> — this is a method's attempt to apply that change. Your task is to judge how well it worked.</li>
+    </ul>
+    <p><strong>Please use headphones</strong> for the best listening experience. There are no right or wrong answers — we value your honest opinion.</p>
+  </section>
+  <section id="listening-test">
+    <h2>Listening Test</h2>
+    <p><em>There are 5 different music editing tasks below. For each task, multiple methods have produced edited results. Please rate each result independently on all three questions.</em></p>
+    <div class="evaluation-module">
+  <h3>Edited Result 1 <span class="method-label">Armonia-v8 (Proposed)</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a grunge rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of a classical score</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_ours.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_1" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_1" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_1" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_1" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_1" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_1" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_1" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_1" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_1" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_1" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_1" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_1" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_1" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_1" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_1" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 2 <span class="method-label">SDEdit</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a grunge rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of a classical score</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_sdedit.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_2" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_2" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_2" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_2" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_2" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_2" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_2" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_2" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_2" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_2" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_2" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_2" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_2" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_2" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_2" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 3 <span class="method-label">DDPM</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a grunge rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of a classical score</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_ddpm.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_3" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_3" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_3" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_3" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_3" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_3" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_3" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_3" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_3" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_3" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_3" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_3" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_3" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_3" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_3" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 4 <span class="method-label">DDIM</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a grunge rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of a classical score</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_ddim.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_4" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_4" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_4" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_4" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_4" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_4" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_4" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_4" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_4" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_4" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_4" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_4" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_4" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_4" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_4" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 5 <span class="method-label">MusicGen</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a grunge rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of a classical score</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_musicgen.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_5" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_5" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_5" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_5" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_5" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_5" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_5" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_5" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_5" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_5" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_5" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_5" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_5" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_5" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_5" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 6 <span class="method-label">MAGUS</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a grunge rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of a classical score</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_a_classical_score_magus.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_6" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_6" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_6" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_6" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_6" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_6" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_6" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_6" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_6" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_6" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_6" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_6" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_6" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_6" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_6" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 7 <span class="method-label">Armonia-v8 (Proposed)</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a hard rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of an opera piece</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_ours.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_7" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_7" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_7" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_7" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_7" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_7" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_7" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_7" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_7" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_7" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_7" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_7" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_7" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_7" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_7" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 8 <span class="method-label">SDEdit</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a hard rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of an opera piece</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_sdedit.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_8" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_8" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_8" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_8" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_8" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_8" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_8" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_8" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_8" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_8" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_8" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_8" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_8" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_8" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_8" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 9 <span class="method-label">DDPM</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a hard rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of an opera piece</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_ddpm.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_9" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_9" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_9" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_9" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_9" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_9" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_9" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_9" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_9" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_9" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_9" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_9" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_9" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_9" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_9" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 10 <span class="method-label">DDIM</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a hard rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of an opera piece</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_ddim.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_10" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_10" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_10" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_10" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_10" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_10" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_10" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_10" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_10" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_10" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_10" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_10" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_10" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_10" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_10" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 11 <span class="method-label">MusicGen</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a hard rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of an opera piece</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_musicgen.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_11" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_11" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_11" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_11" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_11" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_11" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_11" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_11" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_11" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_11" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_11" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_11" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_11" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_11" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_11" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 12 <span class="method-label">MAGUS</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">A recording of a hard rock song.</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">A recording of an opera piece</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/A_recording_of_an_opera_piece_magus.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_12" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_12" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_12" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_12" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_12" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_12" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_12" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_12" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_12" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_12" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_12" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_12" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_12" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_12" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_12" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 13 <span class="method-label">Armonia-v8 (Proposed)</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo clarinet music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo hihat music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_ours.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_13" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_13" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_13" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_13" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_13" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_13" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_13" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_13" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_13" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_13" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_13" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_13" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_13" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_13" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_13" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 14 <span class="method-label">SDEdit</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo clarinet music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo hihat music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_sdedit.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_14" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_14" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_14" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_14" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_14" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_14" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_14" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_14" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_14" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_14" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_14" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_14" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_14" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_14" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_14" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 15 <span class="method-label">MusicGen</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo clarinet music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo hihat music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_musicgen.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_15" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_15" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_15" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_15" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_15" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_15" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_15" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_15" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_15" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_15" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_15" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_15" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_15" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_15" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_15" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 16 <span class="method-label">MAGUS</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo clarinet music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo hihat music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/clarinet_to_a_solo_hihat_music_magus.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_16" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_16" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_16" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_16" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_16" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_16" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_16" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_16" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_16" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_16" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_16" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_16" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_16" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_16" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_16" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 17 <span class="method-label">Armonia-v8 (Proposed)</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a typical punk music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a typical jazz music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_ours.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_17" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_17" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_17" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_17" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_17" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_17" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_17" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_17" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_17" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_17" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_17" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_17" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_17" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_17" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_17" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 18 <span class="method-label">SDEdit</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a typical punk music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a typical jazz music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_sdedit.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_18" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_18" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_18" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_18" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_18" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_18" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_18" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_18" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_18" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_18" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_18" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_18" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_18" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_18" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_18" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 19 <span class="method-label">MusicGen</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a typical punk music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a typical jazz music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_musicgen.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_19" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_19" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_19" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_19" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_19" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_19" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_19" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_19" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_19" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_19" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_19" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_19" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_19" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_19" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_19" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 20 <span class="method-label">MAGUS</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a typical punk music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a typical jazz music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/punk_to_a_typical_jazz_music_magus.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_20" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_20" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_20" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_20" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_20" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_20" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_20" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_20" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_20" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_20" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_20" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_20" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_20" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_20" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_20" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 21 <span class="method-label">Armonia-v8 (Proposed)</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo piano music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo drum music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_ours.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_21" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_21" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_21" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_21" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_21" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_21" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_21" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_21" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_21" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_21" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_21" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_21" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_21" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_21" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_21" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 22 <span class="method-label">SDEdit</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo piano music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo drum music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_sdedit.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_22" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_22" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_22" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_22" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_22" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_22" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_22" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_22" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_22" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_22" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_22" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_22" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_22" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_22" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_22" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 23 <span class="method-label">MusicGen</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo piano music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo drum music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_musicgen.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_23" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_23" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_23" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_23" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_23" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_23" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_23" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_23" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_23" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_23" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_23" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_23" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_23" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_23" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_23" value="5"></label></li>
+  </ul>
+</div>
+</div>
+<div class="evaluation-module">
+  <h3>Edited Result 24 <span class="method-label">MAGUS</span></h3>
+  <h4>Source Music &amp; Prompts</h4>
+  <p><strong>Source Music:</strong></p>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_source.wav">Your browser does not support the audio element.</audio>
+  <p><strong>Source Prompt:</strong></p>
+  <div class="prompt">a solo piano music</div>
+  <p><strong>Target Prompt:</strong></p>
+  <div class="prompt">a solo drum music</div>
+  <hr>
+  <h4>Edited Result</h4>
+  <audio controls src="static/audio/piano_to_a_solo_drum_music_magus.wav">Your browser does not support the audio element.</audio>
+  <div class="question-block">
+  <p class="question-text"><strong>Question 1 (Target Accuracy):</strong> Does the instrument or timbre in this edited music actually sound like what the target description asks for?</p>
+  <p class="question-explanation">For example: If the target asks to change something to a flute sound, does it actually sound like a flute?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q1_24" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q1_24" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q1_24" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q1_24" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q1_24" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 2 (Background Preservation):</strong> Besides the main sound we're trying to change, does the background music stay the same?</p>
+  <p class="question-explanation">Are there any strange noises or parts that were incorrectly modified?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q2_24" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q2_24" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q2_24" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q2_24" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q2_24" value="5"></label></li>
+  </ul>
+</div>
+<div class="question-block">
+  <p class="question-text"><strong>Question 3 (Overall Naturalness):</strong> Does the edited sound blend naturally? Does it sound like a coherent piece of music?</p>
+  <p class="question-explanation">Does it sound like a complete song, or does it sound like parts were awkwardly pieced together?</p>
+  <ul class="likert-scale">
+    <li><label class="likert-label">1: Bad<input type="radio" name="q3_24" value="1"></label></li>
+    <li><label class="likert-label">2: Poor<input type="radio" name="q3_24" value="2"></label></li>
+    <li><label class="likert-label">3: Fair<input type="radio" name="q3_24" value="3"></label></li>
+    <li><label class="likert-label">4: Good<input type="radio" name="q3_24" value="4"></label></li>
+    <li><label class="likert-label">5: Excellent<input type="radio" name="q3_24" value="5"></label></li>
+  </ul>
+</div>
+</div>
+  </section>
+</div>
+</body>
+</html>

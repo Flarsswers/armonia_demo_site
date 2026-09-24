@@ -29,6 +29,7 @@ MARGIN_DIR = OUT_DIR / "margins"
 
 MUSICDELTA_BL = "/DATA6_6T/yy/musicdelta_results"
 MUSICDELTA_SRC = "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt"
+MD_SRC_CSV = "/DATA6_6T/yy/AudioEditingCode-codeclean/MedleyMDPrompts/captions_sources.csv"
 MELODIA_BL = "/DATA6_6T/yy/exp_results_models"
 MELODIA_SRC = "/DATA6_6T/yy/MelodiaEdit"
 
@@ -94,6 +95,19 @@ DS_BL_MAP = {
     "Real_Style": "style",
     "Generated_Mood": "mood",
 }
+
+
+def load_md_captions():
+    """MusicDelta 每首歌的真实 source 描述（captions_sources.csv 变体 1）。"""
+    import csv
+    prompts = {}
+    with open(MD_SRC_CSV) as f:
+        for filename, caption in csv.reader(f):
+            if filename == "filename":
+                continue
+            cat = filename.replace("_MIX.wav", "")
+            prompts.setdefault(cat, caption.strip())
+    return prompts
 
 
 def load_margins():
@@ -187,15 +201,37 @@ def select_musicdelta(md_rows):
         if len(top) >= 10:
             break
 
+    # 基线对齐校验：任一基线的目录名与 target 不完全一致（例如超长 prompt 被
+    # 生成脚本截断）的案例，换成下一个对齐干净的候选（类别不重复）。
+    used_cats = set(r["cat"] for r in top)
+    for i, r in enumerate(top):
+        if md_baselines_aligned(r):
+            continue
+        for alt in best_list:
+            if alt is r or alt["cat"] in used_cats:
+                continue
+            if md_baselines_aligned(alt):
+                print(f"  [替换] {r['cat']}: {r['target'][:50]}... (margin={r['margin']:.3f}) "
+                      f"基线目录名与 target 不一致，换成 {alt['cat']}: {alt['target'][:50]}... "
+                      f"(margin={alt['margin']:.3f})")
+                used_cats.discard(r["cat"])
+                used_cats.add(alt["cat"])
+                top[i] = alt
+                break
+    top.sort(key=lambda x: -x["margin"])
+
     print(f"\nMusicDelta 候选 pair 数: {len(best)}")
     print("  Best ratio distribution:", dict(Counter(r["ratio"] for r in top)))
+    md_captions = load_md_captions()
     results = []
     for r in top:
         baselines = find_md_baselines(r["cat"], r["seed"], r["target"])
+        caption = md_captions.get(r["cat"], "")
+        src_prompt = caption if caption else f"[MusicDelta] {r['cat']}"
         results.append({
             "title": r["target"].rstrip(".").strip(),
             "source_wav": f"{MUSICDELTA_SRC}/{r['cat']}/{r['seed']}.wav",
-            "source_prompt": f"[MusicDelta] {r['cat']}",
+            "source_prompt": src_prompt,
             "target_prompt": r["target"].rstrip(".").strip(),
             "our_wav": r["wav"],
             "ratio": r["ratio"],
@@ -207,6 +243,20 @@ def select_musicdelta(md_rows):
         print(f"    #{len(results)} [{r['ratio']}] {r['cat']}: {r['target'][:45]}... "
               f"margin={r['margin']:.3f} (S_t={r['clap_score']:.3f} S_s={r['src_clap']:.3f})")
     return results
+
+
+def md_baselines_aligned(r) -> bool:
+    """校验一个 MusicDelta 候选的所有基线：目录名必须与 target 完全一致（去尾点）、
+    文件名必须是 seed。防止超长 prompt 被截断导致错位。"""
+    tgt = r["target"].rstrip(".").strip()
+    bl = find_md_baselines(r["cat"], r["seed"], r["target"])
+    for k, v in bl.items():
+        dname = Path(v).parent.parent.name.rstrip(".").strip()
+        if dname != tgt:
+            return False
+        if Path(v).stem != r["seed"]:
+            return False
+    return True
 
 
 def select_melodia(ml_rows):

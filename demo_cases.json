@@ -3,7 +3,7 @@
     {
       "title": "A recording of a classical score",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_Grunge/2.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_Grunge",
+      "source_prompt": "A recording of a grunge rock song.",
       "target_prompt": "A recording of a classical score",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_Grunge/2/A recording of a classical score..wav",
       "ratio": "ratio0.8",
@@ -26,7 +26,7 @@
     {
       "title": "A recording of an opera piece",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_Zeppelin/1.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_Zeppelin",
+      "source_prompt": "A recording of a hard rock song.",
       "target_prompt": "A recording of an opera piece",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_Zeppelin/1/A recording of an opera piece..wav",
       "ratio": "ratio0.8",
@@ -49,7 +49,7 @@
     {
       "title": "A high quality recording of a violin playing a cool metal solo with accompaniment",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_SpeedMetal/2.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_SpeedMetal",
+      "source_prompt": "A recording of a cool metal song.",
       "target_prompt": "A high quality recording of a violin playing a cool metal solo with accompaniment",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_SpeedMetal/2/A high quality recording of a violin playing a cool metal solo with accompaniment..wav",
       "ratio": "ratio0.8",
@@ -72,7 +72,7 @@
     {
       "title": "A recording of a dark techno song",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_BebopJazz/2.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_BebopJazz",
+      "source_prompt": "A recording of an upbeat jazz song.",
       "target_prompt": "A recording of a dark techno song",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.6/K3_lr0.001_lamEdit1_v8/MusicDelta_BebopJazz/2/A recording of a dark techno song..wav",
       "ratio": "ratio0.6",
@@ -95,7 +95,7 @@
     {
       "title": "A recording of an epic movie soundtrack",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_Disco/11.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_Disco",
+      "source_prompt": "A recording of an upbeat disco song.",
       "target_prompt": "A recording of an epic movie soundtrack",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_Disco/11/A recording of an epic movie soundtrack..wav",
       "ratio": "ratio0.8",
@@ -118,7 +118,7 @@
     {
       "title": "A recording of Arabic music",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_80sRock/3.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_80sRock",
+      "source_prompt": "A recording of a rock song.",
       "target_prompt": "A recording of Arabic music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_80sRock/3/A recording of Arabic music..wav",
       "ratio": "ratio0.8",
@@ -141,7 +141,7 @@
     {
       "title": "A high quality recording of an orchestra playing an epic soundtrack",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_Beatles/2.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_Beatles",
+      "source_prompt": "A high quality recording of a man singing and drums, guitar and bass playing a song, and later a woman is singing.",
       "target_prompt": "A high quality recording of an orchestra playing an epic soundtrack",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.6/K3_lr0.001_lamEdit1_v8/MusicDelta_Beatles/2/A high quality recording of an orchestra playing an epic soundtrack..wav",
       "ratio": "ratio0.6",
@@ -162,32 +162,9 @@
       }
     },
     {
-      "title": "A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again",
-      "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_GriegTrolltog/5.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_GriegTrolltog",
-      "target_prompt": "A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again",
-      "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_GriegTrolltog/5/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again..wav",
-      "ratio": "ratio0.8",
-      "baselines": {
-        "sdedit": "/DATA6_6T/yy/musicdelta_results/sdedit/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again./wavs/5.wav",
-        "ddpm": "/DATA6_6T/yy/musicdelta_results/ddpm/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again./wavs/5.wav",
-        "ddim": "/DATA6_6T/yy/musicdelta_results/ddim/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again./wavs/5.wav",
-        "ddpm-100": "/DATA6_6T/yy/musicdelta_results/ddpm-100/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again./wavs/5.wav",
-        "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again./wavs/5.wav",
-        "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite/wavs/5.wav",
-        "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite/wavs/5.wav",
-        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_GriegTrolltog/A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again./wavs/5.wav"
-      },
-      "metrics": {
-        "clap_score": 0.5305,
-        "src_clap": 0.0233,
-        "margin": 0.5072
-      }
-    },
-    {
       "title": "A recording of Arabic music",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_Britpop/3.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_Britpop",
+      "source_prompt": "A recording of a rock song.",
       "target_prompt": "A recording of Arabic music",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.6/K3_lr0.001_lamEdit1_v8/MusicDelta_Britpop/3/A recording of Arabic music..wav",
       "ratio": "ratio0.6",
@@ -210,7 +187,7 @@
     {
       "title": "A recording of an upbeat techno song",
       "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_Gospel/3.wav",
-      "source_prompt": "[MusicDelta] MusicDelta_Gospel",
+      "source_prompt": "A recording of an upbeat gospel song.",
       "target_prompt": "A recording of an upbeat techno song",
       "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_Gospel/3/A recording of an upbeat techno song..wav",
       "ratio": "ratio0.8",
@@ -228,6 +205,29 @@
         "clap_score": 0.4713,
         "src_clap": -0.0246,
         "margin": 0.4959
+      }
+    },
+    {
+      "title": "A recording of an techno song",
+      "source_wav": "/DATA6_6T/yy/musicdelta_mix-wav_and_prompt/MusicDelta_Rockabilly/1.wav",
+      "source_prompt": "A recording of an old rock song.",
+      "target_prompt": "A recording of an techno song",
+      "our_wav": "/DATA1_4T/shared/AudioLDM2/A_ENM_Inversion/results/musicdelta/musicdelta_results_attn_enm_v8_no_src_ratio0.8/K3_lr0.001_lamEdit1_v8/MusicDelta_Rockabilly/1/A recording of an techno song..wav",
+      "ratio": "ratio0.8",
+      "baselines": {
+        "sdedit": "/DATA6_6T/yy/musicdelta_results/sdedit/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav",
+        "ddpm": "/DATA6_6T/yy/musicdelta_results/ddpm/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav",
+        "ddim": "/DATA6_6T/yy/musicdelta_results/ddim/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav",
+        "ddpm-100": "/DATA6_6T/yy/musicdelta_results/ddpm-100/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav",
+        "ddim-1000": "/DATA6_6T/yy/musicdelta_results/ddim-1000/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav",
+        "musicgen": "/DATA6_6T/yy/musicdelta_results/musicgen/MusicDelta_Rockabilly/A recording of an techno song/wavs/1.wav",
+        "magus": "/DATA6_6T/yy/musicdelta_results/magus/MusicDelta_Rockabilly/A recording of an techno song/wavs/1.wav",
+        "ours_melodia_(ours)": "/DATA6_6T/yy/musicdelta_results/ours/8-14/1000/MusicDelta_Rockabilly/A recording of an techno song./wavs/1.wav"
+      },
+      "metrics": {
+        "clap_score": 0.5239,
+        "src_clap": 0.0501,
+        "margin": 0.4738
       }
     }
   ],
