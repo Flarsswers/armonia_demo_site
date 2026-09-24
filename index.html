@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armonia: Zero-Shot Timbre Transfer Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #ffffff; --content-bg: #ffffff; --border-color: #e9ecef;
+      --text-primary: #212529; --text-secondary: #6c757d;
+      --accent-purple: #a29cff; --accent-purple-light: #cbbdff;
+      --highlight-purple-bg: linear-gradient(145deg, rgba(162,156,255,0.05), rgba(162,156,255,0.01));
+      --highlight-purple-border: #dcdcff;
+      --accent-blue: #87CEEB; --accent-blue-light: #b0e0e6;
+      --highlight-blue-bg: linear-gradient(145deg, rgba(135,206,235,0.05), rgba(135,206,235,0.01));
+      --highlight-blue-border: #cfe8ff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color); color: var(--text-primary); line-height: 1.7; margin: 0;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 4.5rem 0; }
+    .hero { text-align: center; padding: 4rem 0 3rem 0; }
+    .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; }
+    .hero p { font-size: 1.5rem; font-weight: 400; margin-bottom: 32px; }
+    .project-title { font-size: 4.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 0.5rem; background: linear-gradient(45deg, var(--text-primary), #495057); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .project-subtitle { font-size: 1.5rem; font-weight: 400; color: var(--text-secondary); margin-top: 1rem; margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .links a {
+      display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem;
+      border: 1px solid var(--border-color); color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+    .links a:hover { background: #f8f9fa; border-color: var(--accent-purple); }
+    .abstract { max-width: 800px; margin: 2.5rem auto 0 auto; text-align: justify; font-size: 1.1rem; color: #343a40; }
+    .pipeline-figure { max-width: 1000px; margin: 2.5rem auto 0 auto; }
+    .pipeline-figure img { width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .tabs { display: flex; justify-content: center; margin-bottom: 3rem; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; }
+    .tab-button {
+      padding: 1rem 1.5rem; cursor: pointer; border: none; background: none;
+      font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);
+      border-bottom: 3px solid transparent; transition: color 0.3s, border-color 0.3s; margin-bottom: -1px;
+    }
+    .tab-button:hover { color: var(--text-primary); }
+    .tab-button.active { color: var(--accent-blue); border-bottom-color: var(--accent-blue); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .example-card {
+      background-color: var(--content-bg); border: 1px solid var(--border-color);
+      border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 3rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .example-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.06); transform: translateY(-4px); }
+    .example-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .example-title code {
+      font-family: 'Fira Code', monospace; background-color: #e9ecef;
+      padding: 3px 8px; border-radius: 6px; color: var(--accent-blue); font-weight: 500;
+    }
+    .prompt-text { margin-bottom: 1.5rem; }
+    .prompt-text p { margin-bottom: 0.3rem; }
+    .source-audio {
+      background-color: #e9ecef; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;
+    }
+    .source-audio h5 { margin-top: 0; }
+    .methods-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+    }
+    .audio-item {
+      display: flex; flex-direction: column; background-color: #f8f9fa;
+      padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color);
+    }
+    .audio-item.is-highlight-red {
+      background: var(--highlight-purple-bg); border-color: var(--highlight-purple-border);
+      box-shadow: 0 0 20px rgba(162,156,255,0.15);
+    }
+    .audio-item-title { font-weight: 600; margin: 0 0 0.75rem 0; color: var(--text-primary); font-size: 0.9rem; }
+    audio { width: 100%; border-radius: 50px; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="project-title">Armonia</h1>
+        <p class="project-subtitle">Zero-Shot Timbre Transfer in Polyphonic Music</p>
+        <div class="links">
+          <a href="#"><i class="fas fa-file-pdf"></i> Paper</a>
+          <a href="#"><i class="fas fa-code"></i> Code</a>
+          <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+        <div class="abstract">
+          <p>Text-guided music editing aims to modify specified attributes of a music while preserving musical content unrelated to the intended change, enabling flexible music creation.
+          Inversion anchors this editing process to the source music by mapping it to a state that initializes generation under the target text.
+          However, a state that enables faithful source reconstruction is not necessarily a suitable starting point for the requested edit.
+          This distinction motivates us to move part of the editing control into inversion and prepare an initialization that is better suited to the requested edit.
+          To this end, we propose <em>Armonia</em>, a training-free method that refines inversion states using output-level attention distillation derived from source- and target-conditioned model responses.
+          To improve refinement efficiency and effectiveness while reducing the risk of off-manifold drift, Armonia uses temporal weighting to focus optimization on selected inversion steps and local projection to limit deviations from each DDIM inversion proposal.
+          The resulting state is then used to initialize the original target-conditioned denoising process, leaving the pretrained diffusion model unchanged.
+          Compared with SOTA, Armonia achieves an average relative improvement of 11.5% in CLAP across three datasets while retaining competitive structural preservation.</p>
+        </div>
+        <div class="pipeline-figure">
+          <img src="static/pipeline.png" alt="Armonia pipeline">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="tabs">
+          <button class="tab-button active" onclick="openTab(event, 'musicdelta')">MusicDelta Dataset</button>
+          <button class="tab-button" onclick="openTab(event, 'melodia')">Melodia Dataset</button>
+        </div>
+
+        <div id="musicdelta" class="tab-content active">
+          
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of a classical score</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_Grunge</p>
+          <p><strong>Target Prompt:</strong> A recording of a classical score</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_1_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_1_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_1_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_1_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_1_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_1_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_1_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_1_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of an opera piece</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_Zeppelin</p>
+          <p><strong>Target Prompt:</strong> A recording of an opera piece</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_2_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_2_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_2_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_2_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_2_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_2_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_2_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_2_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A high quality recording of a violin playing a cool metal solo with accompaniment</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_SpeedMetal</p>
+          <p><strong>Target Prompt:</strong> A high quality recording of a violin playing a cool metal solo with accompaniment</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_3_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_3_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_3_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_3_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_3_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_3_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_3_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_3_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of a dark techno song</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_BebopJazz</p>
+          <p><strong>Target Prompt:</strong> A recording of a dark techno song</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_4_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_4_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_4_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_4_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_4_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_4_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_4_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_4_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of an epic movie soundtrack</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_Disco</p>
+          <p><strong>Target Prompt:</strong> A recording of an epic movie soundtrack</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_5_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_5_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_5_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_5_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_5_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_5_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_5_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_5_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of Arabic music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_80sRock</p>
+          <p><strong>Target Prompt:</strong> A recording of Arabic music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_6_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_6_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_6_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_6_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_6_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_6_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_6_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_6_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A high quality recording of an orchestra playing an epic soundtrack</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_Beatles</p>
+          <p><strong>Target Prompt:</strong> A high quality recording of an orchestra playing an epic soundtrack</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_7_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_7_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_7_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_7_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_7_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_7_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_7_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_7_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_GriegTrolltog</p>
+          <p><strong>Target Prompt:</strong> A recording of a sneaky, quiet and scary techno song, that turns loud in the middle then turns quite again</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_8_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_8_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_8_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_8_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_8_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_8_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_8_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_8_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of Arabic music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_Britpop</p>
+          <p><strong>Target Prompt:</strong> A recording of Arabic music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_9_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_9_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_9_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_9_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_9_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_9_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_9_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_9_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>A recording of an upbeat techno song</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> [MusicDelta] MusicDelta_Gospel</p>
+          <p><strong>Target Prompt:</strong> A recording of an upbeat techno song</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/musicdelta_10_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/musicdelta_10_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/musicdelta_10_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM-Friendly</h5>
+  <audio controls src="static/audio/musicdelta_10_ddpm-100.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/musicdelta_10_ddim.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/musicdelta_10_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/musicdelta_10_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/musicdelta_10_ours_melodia_(ours).wav"></audio>
+</div>
+        </div>
+      </div>
+        </div>
+
+        <div id="melodia" class="tab-content">
+          
+      <div class="example-card">
+        <h4 class="example-title"><code>clarinet → a solo hihat music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a solo clarinet music</p>
+          <p><strong>Target Prompt:</strong> a solo hihat music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_1_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_1_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_1_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_1_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_1_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_1_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_1_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_1_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>piano → a solo taiko music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a solo piano music</p>
+          <p><strong>Target Prompt:</strong> a solo taiko music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_2_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_2_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_2_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_2_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_2_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_2_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_2_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_2_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>punk → a typical jazz music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a typical punk music</p>
+          <p><strong>Target Prompt:</strong> a typical jazz music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_3_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_3_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_3_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_3_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_3_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_3_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_3_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_3_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>piano → a solo drum music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a solo piano music</p>
+          <p><strong>Target Prompt:</strong> a solo drum music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_4_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_4_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_4_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_4_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_4_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_4_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_4_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_4_ours_ours_final.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>accordion → a solo hihat music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a solo accordion music</p>
+          <p><strong>Target Prompt:</strong> a solo hihat music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_5_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_5_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_5_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_5_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_5_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_5_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_5_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_5_ours_ours_final.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>saxophone → a solo piano music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a solo saxophone music</p>
+          <p><strong>Target Prompt:</strong> a solo piano music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_6_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_6_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_6_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_6_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_6_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_6_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_6_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_6_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>rock → a typical jazz music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a typical rock music</p>
+          <p><strong>Target Prompt:</strong> a typical jazz music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_7_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_7_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_7_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_7_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_7_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_7_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_7_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_7_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>metal → a typical jazz music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a typical metal music</p>
+          <p><strong>Target Prompt:</strong> a typical jazz music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_8_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_8_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_8_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_8_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_8_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_8_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_8_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_8_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>energetic → a happy music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a energetic music</p>
+          <p><strong>Target Prompt:</strong> a happy music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_9_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_9_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_9_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_9_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_9_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_9_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_9_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_9_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <h4 class="example-title"><code>peaceful → a energetic music</code></h4>
+        <div class="prompt-text">
+          <p><strong>Source Description:</strong> a peaceful music</p>
+          <p><strong>Target Prompt:</strong> a energetic music</p>
+        </div>
+        <div class="source-audio">
+          <h5>Source Audio</h5>
+          <audio controls src="static/audio/melodia_10_source.wav"></audio>
+        </div>
+        <div class="methods-grid">
+          <div class="audio-item is-highlight-red">
+  <h5 class="audio-item-title"><i class="fas fa-star"></i>Armonia (Ours)</h5>
+  <audio controls src="static/audio/melodia_10_ours.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">SDEdit</h5>
+  <audio controls src="static/audio/melodia_10_sdedit.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDPM</h5>
+  <audio controls src="static/audio/melodia_10_ddpm.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">DDIM</h5>
+  <audio controls src="static/audio/melodia_10_ddim_worse.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicGen</h5>
+  <audio controls src="static/audio/melodia_10_musicgen.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">MusicMagus</h5>
+  <audio controls src="static/audio/melodia_10_magus.wav"></audio>
+</div>
+<div class="audio-item">
+  <h5 class="audio-item-title">Melodia</h5>
+  <audio controls src="static/audio/melodia_10_ours_ours.wav"></audio>
+</div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function openTab(evt, tabName) {
+      document.querySelectorAll(".tab-content").forEach(t => t.style.display = "none");
+      document.querySelectorAll(".tab-button").forEach(b => b.classList.remove("active"));
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.classList.add("active");
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector(".tab-button").click();
+    });
+  </script>
+</body>
+</html>
