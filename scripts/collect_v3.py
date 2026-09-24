@@ -509,7 +509,7 @@ def main():
         shutil.copy2(out_json, backup)
         print(f"\n旧 demo_cases.json 已备份到 {backup.name}")
     with open(out_json, "w") as f:
-        json.dump({"MusicDelta": md, "Melodia": ml}, f, indent=2, ensure_ascii=False)
+        json.dump({"MusicDelta": md, "MeloEdit": ml}, f, indent=2, ensure_ascii=False)
     print(f"Saved: {out_json}")
 
     # ---- 听评案例：2 个 MusicDelta + 3 个 Melodia（按 margin 最高，类别不重复） ----
@@ -524,12 +524,12 @@ def main():
         q_cases.append({"_group": "musicdelta", **r})
     ml_seen = set()
     for r in ml:
-        if len([c for c in q_cases if c["_group"] == "melodia"]) >= 3:
+        if len([c for c in q_cases if c["_group"] == "meloedit"]) >= 3:
             break
         if r["dataset"] in ml_seen:
             continue
         ml_seen.add(r["dataset"])
-        q_cases.append({"_group": "melodia", **r})
+        q_cases.append({"_group": "meloedit", **r})
     # 听评 baseline 精简：MusicDelta 用 SDEdit/DDPM/DDIM/MusicGen/MAGUS；Melodia 用 SDEdit/MusicGen/MAGUS
     for c in q_cases:
         if c["_group"] == "musicdelta":

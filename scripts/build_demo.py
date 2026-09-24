@@ -137,7 +137,7 @@ def make_case_card(case, dataset_idx, case_idx):
 
 # Build tab content
 md_cards = "\n".join(make_case_card(c, 0, i) for i, c in enumerate(data.get("MusicDelta", [])))
-ml_cards = "\n".join(make_case_card(c, 1, i) for i, c in enumerate(data.get("Melodia", [])))
+ml_cards = "\n".join(make_case_card(c, 1, i) for i, c in enumerate(data.get("MeloEdit", [])))
 
 html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -256,14 +256,14 @@ html = f"""<!DOCTYPE html>
       <div class="container">
         <div class="tabs">
           <button class="tab-button active" onclick="openTab(event, 'musicdelta')">MusicDelta Dataset</button>
-          <button class="tab-button" onclick="openTab(event, 'melodia')">Melodia Dataset</button>
+          <button class="tab-button" onclick="openTab(event, 'meloedit')">MeloEdit Dataset</button>
         </div>
 
         <div id="musicdelta" class="tab-content active">
           {md_cards}
         </div>
 
-        <div id="melodia" class="tab-content">
+        <div id="meloedit" class="tab-content">
           {ml_cards}
         </div>
       </div>
@@ -287,5 +287,5 @@ html = f"""<!DOCTYPE html>
 out = OUTPUT_DIR / "index.html"
 out.write_text(html)
 print(f"Generated: {out}")
-print(f"  {len(data.get('MusicDelta',[]))} MusicDelta + {len(data.get('Melodia',[]))} Melodia cases")
+print(f"  {len(data.get('MusicDelta',[]))} MusicDelta + {len(data.get('MeloEdit',[]))} MeloEdit cases")
 print(f"  Audio: {AUDIO_DIR}")

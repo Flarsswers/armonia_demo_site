@@ -1,6 +1,6 @@
 # Armonia — Zero-Shot Timbre Transfer Demo
 
-Armonia 论文的 demo 网站（MusicDelta 10 案例 + Melodia 10 案例，A/B 对照听感）。
+Armonia 论文的 demo 网站（MusicDelta 10 案例 + MeloEdit 10 案例，A/B 对照听感）。
 
 ## 目录结构
 
